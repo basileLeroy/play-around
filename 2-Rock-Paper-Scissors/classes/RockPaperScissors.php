@@ -3,6 +3,7 @@
 
 class RockPaperScissors
 {
+    //TODO: What I will need: Pc-Pick; Player-Pick & a Result
     public $computerPick = ["rock", "paper", "scissors"];
     public $result;
     public $yourPick;
@@ -12,7 +13,7 @@ class RockPaperScissors
         // This function functions as your game "engine"
         // Now it's on to you to take the steering wheel and determine how it will work
 
-        //TODO: Have the player pick an option and submit
+        //TODO: Have the player pick an option and submit to trigger the other functions
         if (!empty($_POST['name'])) {
             $this->yourPick = $_POST['name'];
             $this->computerChoice();
@@ -20,15 +21,16 @@ class RockPaperScissors
         }
     }
 
+    //TODO: Making a randomizer to select the computer choice
     public function computerChoice()
     {
         $computerPick = Array("rock", "paper", "scissors");
 
         $this->computerPick = $computerPick[array_rand($computerPick)];
-        
-        
+
     }
 
+    //TODO: Defining the results
     public function gameResult()
     {
         if ($_POST['name'] === "rock") {
@@ -67,7 +69,5 @@ class RockPaperScissors
                 $this->result = "DRAW!";
             }
         }
-
-        
     }
 }
