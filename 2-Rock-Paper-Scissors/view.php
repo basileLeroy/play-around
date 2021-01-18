@@ -18,6 +18,10 @@
     echo $_POST['name'];
     ?> -->
 
+    <div class="scoreboard">
+    <h3>your score: <?php echo $_SESSION['yourScore'];?> - PC score: <?php echo $_SESSION['pcScore'];?></h3>
+    </div>
+
     <div class="game-field">
     <form action="index.php" method="POST">
         <div class="computer-pick">

@@ -7,6 +7,8 @@ class RockPaperScissors
     public $computerPick = ["rock", "paper", "scissors"];
     public $result;
     public $yourPick;
+    public $pcScore = 0;
+    public $yourScore = 0;
 
     public function run()
     {
@@ -18,7 +20,18 @@ class RockPaperScissors
             $this->yourPick = $_POST['name'];
             $this->computerChoice();
             $this->gameResult();
+
+            if(!empty($_SESSION["pcScore"])){
+                $this->pcScore = $_SESSION["pcScore"];
+            }
+            if(!empty($_SESSION["yourScore"])){
+                $this->yourScore = $_SESSION["yourScore"];
+            }
         }
+
+        $_SESSION["pcScore"] = $this->pcScore;
+        $_SESSION["yourScore"] = $this->yourScore;
+
     }
 
     //TODO: Making a randomizer to select the computer choice
@@ -37,12 +50,14 @@ class RockPaperScissors
             // == because the value is the same but not the the exact same variable
             if ($this->computerPick == 'paper') {
                 $this->result = "You Lost!";
+                $_SESSION['pcScore']++;
             }
             if ($this->computerPick == 'rock') {
                 $this->result = "DRAW!";
             }
             if ($this->computerPick == 'scissors') {
                 $this->result = "You Won!";
+                $_SESSION['yourScore']++;
             }
         }
 
@@ -52,18 +67,22 @@ class RockPaperScissors
             }
             if ($this->computerPick == 'rock') {
                 $this->result = "You Lost!";
+                $_SESSION['pcScore']++;
             }
             if ($this->computerPick == 'scissors') {
                 $this->result = "You Won!";
+                $_SESSION['yourScore']++;
             }
         }
 
         if ($_POST['name'] === "scissors") {
             if ($this->computerPick == 'paper') {
                 $this->result = "You Won!";
+                $_SESSION['yourScore']++;
             }
             if ($this->computerPick == 'rock') {
                 $this->result = "You Lost!";
+                $_SESSION['pcScore']++;
             }
             if ($this->computerPick == 'scissors') {
                 $this->result = "DRAW!";
