@@ -14,19 +14,18 @@
 </div>
 <br><br>
 <div class="guessInput">
-    <?php
-        pre_r($_POST['guess']);
-        echo $_SESSION['secretNumber'];
-    ?>
 
-    <form method="POST">
-        you have {{ numberOfGuesses }} left! <br><br>
+    <form action="index.php" method="POST">
+        Attempt: <?php echo $_SESSION['attempts']; ?> <br><br>
+        You have guessed: <?php if(isset($_POST['guess'])){echo $_POST['guess'];}?> <br>
+        <p></p>
         <div class="form-group col-md-6">
             <label for="guess">guess:</label>
             <input type="text" name="guess" id="guess" class="form-control" value="<?php echo isset($_POST['guess']) ? $_POST['guess'] : '' ?>">
         </div>
-        <button type="submit" >Try your luck</button>
+        <button type="submit"><?php if(($game->attempts == 5)){echo "Try Again!"; } else {echo "Try your luck";}?></button>
     </form>
+    <p>Result: <?php if(!empty($game->result)){ echo $game->result;} ?></p>
 </div>
 
 </body>

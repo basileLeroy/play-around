@@ -13,9 +13,22 @@ error_reporting(E_ALL);
 // Load you classes
 require_once 'classes/GuessingGame.php';
 
+function whatIsHappening() {
+    
+    echo '<h2>$_POST</h2>';
+    echo "<pre>";
+    var_dump($_POST);
+    echo "</pre>";
+   
+    echo '<h2>$_SESSION</h2>';
+    echo "<pre>";
+    var_dump($_SESSION);
+    echo "</pre>";   
+}
+
 // Start the game
 // As this game is rather simple, one class should be sufficient
-$game = new GuessingGame(5);
+$game = new GuessingGame();
 $game->run();
 
 require 'view.php';
