@@ -49,10 +49,10 @@ class RockPaperScissors
                 $this->result = "DRAW!";
             }
             if ($this->computerPick == 'rock') {
-                $this->result = "You Won!";
+                $this->result = "You Lost!";
             }
             if ($this->computerPick == 'scissors') {
-                $this->result = "You Lost!";
+                $this->result = "You Won!";
             }
         }
 
