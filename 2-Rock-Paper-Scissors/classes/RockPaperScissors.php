@@ -66,11 +66,11 @@ class RockPaperScissors
                 $this->result = "DRAW!";
             }
             if ($this->computerPick == 'rock') {
-                $this->result = "You Lost!";
+                $this->result = "You Won!";
                 $_SESSION['pcScore']++;
             }
             if ($this->computerPick == 'scissors') {
-                $this->result = "You Won!";
+                $this->result = "You Lost!";
                 $_SESSION['yourScore']++;
             }
         }
