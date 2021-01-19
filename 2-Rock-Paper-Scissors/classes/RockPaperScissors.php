@@ -4,7 +4,7 @@
 class RockPaperScissors
 {
     //TODO: What I will need: Pc-Pick; Player-Pick & a Result
-    public $computerPick = ["rock", "paper", "scissors"];
+    public $computerPick;
     public $result;
     public $yourPick;
     public $pcScore = 0;

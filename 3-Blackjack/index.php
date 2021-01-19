@@ -1,4 +1,3 @@
-  
 <?php
 
 // Require the correct variable type to be used (no auto-converting)

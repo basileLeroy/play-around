@@ -15,9 +15,17 @@
 
     <?php
     pre_r($_POST);
+    pre_r($_SESSION);
     echo $_POST['name'];
+    print_r($game->deck[rand(0, 12)]);
     ?>
     <form action="index.php" method="POST">
+
+        <div class="computer-deck">
+            <p>Dealer's Cards:</p>
+            <p><?php if(!empty($_POST['stop'])){print_r($game->computerDeck[rand(0, 12)]);} ?></p>
+            <p><?php if(!empty($_POST['stop'])){print_r($game->computerDeck[rand(0, 12)]);} ?></p>
+        </div>
 
         <div class="total-count">
             <h2>Total: </h2>
@@ -27,10 +35,18 @@
             <p>You </p>
         </div>
 
-        <div class="deck">
+        <div class="your-deck">
             <p>Your cards:</p><br>
-
+            <p><?php if(!empty($_POST['submit'])){print_r($game->yourDeck[rand(0, 12)]);} ?></p>
+            <p><?php if(!empty($_POST['submit'])){print_r($game->yourDeck[rand(0, 12)]);} ?></p>
         </div>
+
+        <?php
+        if (!empty($_POST['submit'])) {
+            echo '<input type="checkbox" id="submit" name="stop" value="stop" >stop</input>';
+            echo '<input type="checkbox" id="submit" name="call" value="call" >call</input><br><br>';
+        }
+        ?>
 
         <button type="submit" id="submit" name="submit" value="play" >Play!</button>
 
