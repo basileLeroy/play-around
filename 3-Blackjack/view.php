@@ -14,18 +14,20 @@
     <br><br>
 
     <?php
+    echo "<hr>";
     pre_r($_POST);
     pre_r($_SESSION);
-    print_r($_SESSION['pcCards']);
-    echo $_POST['name'];
-    print_r($game->deck[rand(0, 12)]);
+    print_r($_SESSION['dealerHand']);
+
+    echo "<hr>";
+    
     ?>
     <form action="index.php" method="POST">
 
         <div class="computer-deck">
             <p>Dealer's Cards:</p>
-            <p><?php if(!empty($_POST['stop'])){print_r($game->computerDeck[rand(0, 12)]);} ?></p>
-            <p><?php if(!empty($_POST['stop'])){print_r($game->computerDeck[rand(0, 12)]);} ?></p>
+            <p><?php echo $game->dealerHand[0] ?></p>
+            <p><?php echo $game->dealerHand[1] ?></p>
         </div>
 
         <div class="total-count">
@@ -40,6 +42,7 @@
             <p>Your cards:</p><br>
             <p><?php echo $game->yourHand[0] ?></p>
             <p><?php echo $game->yourHand[1] ?></p>
+            <?php if (!empty($_POST['draw'])) {$game->createNewElement();} ?>
         </div>
 
         <?php

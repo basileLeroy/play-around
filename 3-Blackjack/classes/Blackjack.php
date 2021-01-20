@@ -10,6 +10,7 @@ class Blackjack
     public $yourSecondCard;
     public $yourNewCard;
     public $YourDeck;
+    public $i = 1;
     public $computerDeck;
 
     public function __construct()
@@ -30,49 +31,45 @@ class Blackjack
             }
         }
 
-        $_SESSION['yourHand'] = $this->yourHand;
-        $_SESSION["cardDeck"] = $this->cardDeck;
-
-        var_dump($this->yourHand);
-        print_r($this->cardDeck);
-
         if (!empty($_POST['draw'])) {
+            $this->createNewElement();
             $this->playerDrawsCard();
 
         }
         
         if (!empty($_POST['stop'])) {
             $this->giveComputerCards();
+            $this->giveComputerCards();
             
 
-            if(!empty($_SESSION["pcCards"])){
-                $this->computerDeck = $_SESSION["pcCards"];
+            if(!empty($_SESSION["dealerHand"])){
+                $this->dealerHand = $_SESSION["dealerHand"];
             }
         }
 
-
-        $_SESSION['yourCards'] = $this->YourDeck;
-        $_SESSION['pcCards'] = $this->computerDeck;
+        $_SESSION['yourHand'] = $this->yourHand;
+        $_SESSION["dealerHand"] = $this->dealerHand;
+        $_SESSION["cardDeck"] = $this->cardDeck;
 
     }
     public function playerDrawsCard()
     {
         $this->yourHand[] = $this->cardSelector();
     }
-    public function giveFirstCard()
-    {
+    // public function giveFirstCard()
+    // {
 
-        $this->yourFirstCard = $this->cardSelector();
-    }
+    //     $this->yourFirstCard = $this->cardSelector();
+    // }
 
-    public function giveSecondCard()
-    {
-        $this->yourSecondCard = $this->cardSelector();
-    }
+    // public function giveSecondCard()
+    // {
+    //     $this->yourSecondCard = $this->cardSelector();
+    // }
 
     public function giveComputerCards()
     {
-        $this->computerDeck = $this->cardSelector();
+        $this->dealerHand[] = $this->cardSelector();
     }
 
     public function cardSelector()
@@ -84,6 +81,16 @@ class Blackjack
 
         var_dump($this->card);
 
+    }
+
+    public function createNewElement(){
+
+        echo '<p>';
+        echo $this->yourHand[$this->i++];
+        echo '</p><br>';
+        echo '<?php if(!empty($_POST["draw"])) {$game->createNewElement();}?>';
+
+        //when creating a third element, it should also create the new php tag, but it stays comented out once it's echoed.
     }
 
     private function generateDeck()
