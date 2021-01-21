@@ -40,9 +40,10 @@
 
         <div class="your-deck">
             <p>Your cards:</p><br>
-            <p><?php echo $game->yourHand[0] ?></p>
-            <p><?php echo $game->yourHand[1] ?></p>
-            <?php if (!empty($_POST['draw'])) {$game->createNewElement();} ?>
+            <!-- replacing the curly brackets from the foreach: oping bracket changes to ":" and closing bracket to "endforeach" -->
+            <?php foreach($game->yourHand as $card) : ?>
+                <p><?= $card ?></p>
+            <?php endforeach ?>
         </div>
 
         <?php

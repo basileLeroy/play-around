@@ -32,7 +32,6 @@ class Blackjack
         }
 
         if (!empty($_POST['draw'])) {
-            $this->createNewElement();
             $this->playerDrawsCard();
 
         }
@@ -81,16 +80,6 @@ class Blackjack
 
         var_dump($this->card);
 
-    }
-
-    public function createNewElement(){
-
-        echo '<p>';
-        echo $this->yourHand[$this->i++];
-        echo '</p><br>';
-        echo '<?php if(!empty($_POST["draw"])) {$game->createNewElement();}?>';
-
-        //when creating a third element, it should also create the new php tag, but it stays comented out once it's echoed.
     }
 
     private function generateDeck()
